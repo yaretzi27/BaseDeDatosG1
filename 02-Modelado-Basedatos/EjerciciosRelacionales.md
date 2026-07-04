@@ -4,3 +4,41 @@
 
 ## Modelo E-R
 ![Hospital](01-Ejercicios-ER.md.jpg)
+
+## MODELO RELACIONAL
+![HOSPITAL](.../img./E-RHospital.drawio.png)
+
+## EJERCICIO 2
+ ![PROFESOR] (.../img./E-REjercicio2.drawio.png)
+### MODELO E-R
+
+## MODELO RELACIONAL
+
+## EJERECICIO 3
+
+## MODELO E-R
+
+## MODELO RELACIONAL
+
+## EJERCICIO 4
+
+### MODELO E-R
+
+## MODELO RELACIONAL
+
+## EJERCICIO 6
+
+## MODELO E-R
+
+## MODELO RELACIONAL
+
+## EJERCICO 7
+
+## MODELO E-R
+
+## MODELO RELACIONAL
+
+
+
+
+
