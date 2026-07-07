@@ -1,90 +1,128 @@
-EJERCICIO 1 (Employee, Department, Project)
-2.- Descripción del sistema de base de datos
+Diccionario de datos de la base de datos Employe
+ 1.- Informacion General 
+
+| Elemento | Valor      | 
+|:---      | :---       |
+| Proyecto | Hospital   |
+| version  | 1.0        |
+| fech     | Junio 2026 |
+| Elaborar | Carol yaretzi lopez sanchez|
+|          |
+
+2 Descripcion del sistema de base de datos 
+
 El sistema administra:
--Empleados
--Departamentos
--Proyectos
--Dependientes
--Ubicaciones
--Horas trabajadas
+-Emloyee
+-Department
+-Project
+-Works_On
+-Dependent
 
-Permite controlar la información de los empleados, los departamentos, los proyectos y las horas que cada empleado trabaja en un proyecto.
-3.- Catálogo de restricciones utilizadas
-Código |Significado |
-PK |Primary Key |
-FK | Foreign Key |
-|NN | Not Null |
-|UQ |Unique |
-AI |Auto Increment |
-CK | Check |
-DF | Default |
-4.- Diccionario de datos
+Permite mantener un mejor control, ordenado y directo de cada paciente asignado.
 
-## Tabla: Empleado
-Campo| Tipo | Longitud | Restricciones | Descripción |
-id_empleado |INT |- | PK, AI, NN |  Identificador del empleado |
-|nombre |VARCHAR | 50 | NN| Nombre |
-|apellido | VARCHAR | 50 | NN | Apellido |
-| direccion | VARCHAR |100 | NULL | Dirección |
-|salario | DECIMAL | - | NN | Salario | 
-|sexo | CHAR | 1 | NN | Sexo | 
-fecha_nacimiento | DATE | - | NN | Fecha de nacimiento |
-|id_departamento | INT | - | FK, NN |Departamento al que pertenece |
-|jefe | INT | - | FK | Jefe inmediato |
+3.-Catalogo de Restrricciones Utilizadas 
+|Codigo|  Significado   |
+|----- | ------------   | 
+|PK    |  Primary Key   |
+|FK    |  Foreign Key   |  
+|MN    |  Not Null      |
+|UQ    |  Unique        |
+|AI    |  Auto Increment|
 
 
-## tabla Departamento
-|Campo|tipo | Restricciones | Descripción |
-|id_departamento | INT | PK,AI,NN | identificador  |
-|nombre | VARCHAR(100) | UQ, NN | Nombre del departamento |
-gerente | INT | FK,NN | Gerente |
-| fecha_inicio | DATE | NN| Fecha de inicio del gerente |
-
-## tabla de proyecto
-|Campo|tipo | Restricciones | Descripción |
-|id_proyecto |  INT | PK,AI,NN | Identificador |
-|nombre | VARCHAR(100) |UQ, NN, | Nombre del proyecto|
-|ubicacion | VARCHAR(100) | NN | Ubicacion |
-|id_departamento | INT | FK,NN | Departamneto responsable |
-
-## tabla dependiente
-|Campo|tipo | Restricciones | Descripción |
-| id_ dependiente | int |PK,AI,NN | Identificador |
-| nombre | VARCGAR (100) | NN | ES EL NOMBRE |
-|Sexo | CHAR(1) | NN | es el sexo de la persona |
-|fecha_naci | DATE | NN | Es la fecha de nacimiento | 
-parentesco |    VARCHAR |(50) | NN |Es el parentesco  que tiene |
-|id_empledo | INT | FK,NN | empledo |
+4.-Diccionario de Datos 
 
 
-## Trabaja en 
-| campo | tipo | restricciones |
-|id_empledo | INT | PK,FK |
-|id_proyecto | INT | PK,FK |
-|Horas | INT |NN |
+##Tabla Employe
+Almacena los datos  personales de los empleados 
 
-## 5.- Relaciones
-|Relación | Cardinalidad | Descripción |
-|Departamento → Empleado | 1:N | Un departamento tiene muchos empleados.|
-|Departamento → Proyecto | 1:N | Un departamento administra varios proyectos.|
-|Empleado → Dependiente | 1:N |Un empleado puede tener varios dependientes.|
-|Empleado → Proyecto | N:M |Un empleado trabaja en varios proyectos.|
+|  campo     | tipo   | longitud    | restricciones |        descripcion                                | 
+| :----      | :----  | :----       | :----         | :----                                             |
+|Name        |VARCHAR |     40      |   PK, AI, NN  |Identificador unico del empleado                   |
+|FistName    |NVARCHAR|     30      |    NN         |Primer nombre del empleado                         |
+|LastName    |VARCHAR |     20      |    NN         |Apellido del empleado                              |
+|Sex         | CHAR   |     1       |    NN         |Genero del empleado                                |
+|Salary      |DECIMAL |     10      |    NN         |Salario del empleado                               |
+|Ssn         |INT     |     -       |    PK,NN      |Numero de seguro social                            |
+|Address     |VARCHAR |     100     |    NN         |Direccion de recidencia de mpleado                 |
+|Birthday    |DATE    |     -       |    NN         |Fecha de cumpleaños                                |
+|Name_dep    |VARCHAR |     50      |    NN         |Nombre del departamento                            |
+|Number_dep  | INT    |     -       |    FK,NN      |Clave foranea que conecta con el numero de departamento|
+|Jef         |VARCHAR |     15      |    FK, NULL   |Jefe del departamento                              |
 
-## Matriz de claves foráneas
-|Tabla | Campo FK | Referencia 
-|Empleado | id_departamento | Departamento(id_departamento) |
-|Proyecto | id_departamento | Departamento(id_departamento) |
-|Dependiente | id_empleado | Empleado(id_empleado) |
-|Trabaja_en | id_empleado | Empleado(id_empleado) |
-| Trabaja_en | id_proyecto | Proyecto(id_proyecto) |
 
-## Integridad referencial
-IR-01 No se puede registrar un empleado con un departamento inexistente.
-IR-02 No se puede registrar un proyecto sin departamento.
-IR-03 No se puede registrar un dependiente sin empleado.
-IR-04 No se puede registrar horas trabajadas sin empleado o proyecto existente.
-## Reglas de negocio
-RN-01 Un empleado pertenece a un solo departamento.
-RN-02 Un departamento administra varios proyectos.
-RN-03 Un empleado puede trabajar en varios proyectos.
-RN-04 Un empleado puede tener varios dependientes
+##Tabla Department
+Almecena informacion de las areas de las empresas 
+
+|  campo     | tipo   | longitud    | restricciones |        descripcion                        | 
+| :----      | :----  | :----       | :----         | :----                                     |
+|Name        |VARCHAR |     50      |   UQ, NN      |Nombre del deparatmento                    |
+|number      |INT     |     -       |    PK, NN     |Numero que identifica al departamento      |
+|manager     |VARCHAR |     15      |    FK,UQ,NN   |Empleado que administra el departaento     |
+|Stadate     | DATE   |     -       |    NN         |Fecha de nacimiento del manager            |
+
+
+##Tabla Location
+Almacen las ubicaciones de los diferents departamentos de la organizacion
+
+|  campo         | tipo   | longitud    | restricciones |        descripcion                        | 
+| :----          | :----  | :----       | :----         | :----                                     |
+|Num_location    |  INT   |     -       |    NN         |Numero interno de la localización          |
+|Name_dep        |VARCHAR |     50      |    PK,NN      |Nombre del departamento                    |
+|Number_dep      |  INT   |     -       |    FK,NN      |Clave foranea que conecta con el departamento|
+
+
+
+##Tabla Project
+Almacena los proyecto de la empresa
+
+|  campo     | tipo   | longitud    | restricciones |        descripcion                        | 
+| :----      | :----  | :----       | :----         | :----                                     |
+|Name        |VARCHAR |     50      |   FK, NN      |Nombre del proyecto                        |
+|number      |INT     |     -       |   FK, PK, NN  |Clave primaria y foranea del proyecto      |
+|Location    |VARCHAR |     50      |   NN          |Ubicación donde se realiza el proyecto     |
+|Name_dep    |VARCHAR |     50      |   NN          |Nombre del departamento que lo control     |
+
+
+##Tabla Works_ON
+Tabla intermedia que conecta con empleado y proyecto
+
+|  campo          | tipo   | longitud    | restricciones |        descripcion                                    | 
+| :----           | :----  | :----       | :----         | :----                                                 |
+|Ssn              |VARCHAR |     15      |    PK,FK,NN   |Clave foranea del empleado que trabaja en el proyecto  |
+|name_project     |INT     |     -       |    PK, NN     |Numero que identifica al departamento                  |
+|number_project   |INT     |     -       |    PK,FK,NN   |Clave foranea del numero de proyecto                   |
+|hours            |DECIMAL |     4 .5    |    NN         |Cantidad de horas dedicads                             |
+
+
+
+##Tabla Dependent
+Almacena los familiares o dependientes de cada empleado
+
+|  campo     | tipo   | longitud    | restricciones |        descripcion                  |
+| :----      | :----  | :----       | :----         | :----                               |
+|Name        |VARCHAR |     50      |   PK, NN      |Nombre del dependiente               |
+|sex         |CHAR    |     1       |   NN          |Genero del dependiente               |
+|Birthdate   |DATE    |     -       |   NN          |Fecha de nacimiento del dependiente  |
+
+
+
+6-.Matriz de Claves Foraneas
+|  Tabla     | Campo FK      | Referencias        |
+| :----      | :----         | :----              |
+|Employee    |Jef Fk         |Employee(ssn)       |
+|Employee    |Number_dep FK  |Department(number)  |
+|Department  |manager FK     |Employee(ssn)       |
+|Location    |Number_Dep     |Department(number)  |
+|project     |Number  FK     |Department(number)  |
+|Works_ON    | Ssn  FK       |Employee(ssn)       |
+
+
+
+7.Integridad Referencial
+
+|Regla |  Descripcion   |
+|----- | ------------   |
+|IR-01 |No se puede registrar un departamento con un manager que no exista en la tabla Employee |
+|IR-02 |Si se elimina un registro en la tabla Employee, Sus registros correspondientes en las tablas dependientes deben eliminarse automáticamente| 
+|IR-03 |No se puede asignar una localización en la tabla Location a un número de departamento inexistente|push 

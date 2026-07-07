@@ -18,12 +18,12 @@
 
 Permite gestionar clientes, registrar pedidos y su contenido (productos, cantidades y precios unitarios al momento de la venta).
 
-Catálogo de restricciones utilizadas 
-| código | Significa | 
-|---|---| 
+Catálogo de restricciones utilizadas
+| código | Significa |
+|---|---|
 | PK | Primary Key | | FK | Foreign Key |
- | NN | Not Null | | UQ | UNIQUE | 
- | AI | Auto Increment | | CK | Check | 
+ | NN | Not Null | | UQ | UNIQUE |
+ | AI | Auto Increment | | CK | Check |
  | DF | Default |
 
 
@@ -83,7 +83,7 @@ Encabezado de pedidos realizados por clientes.
 |IR-03	|No se puede registrar un detalle con un producto inexistente.
 |IR-04	|No se debe eliminar un cliente que tenga pedidos asociados sin antes reasignarlos o eliminarlos.
 |IR-05	|No se debe eliminar un producto que esté referenciado en detalles de pedido sin tratamiento previo.
-|IR-06	|Si se elimina un pedido, se deben eliminar sus detalles 
+|IR-06	|Si se elimina un pedido, se deben eliminar sus detalles
 
 ## Reglas de negocio
 
@@ -98,4 +98,4 @@ Encabezado de pedidos realizados por clientes.
 |RN-08 |	El detalle del pedido no existe sin un producto.
 |RN-09 |	El detalle almacena cantidad > 0 y precio_unitario >= 0.
 |RN-10 |	El subtotal de la línea es cantidad × precio_unitario.
-|RN-11 |	El RFC del cliente debe ser único y con longitud válida 
+|RN-11 |	El RFC del cliente debe ser único y con longitud válida

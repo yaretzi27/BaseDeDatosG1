@@ -99,3 +99,49 @@ REglas de negocio:
 7. el detalle del pedido no existe sin ningun pedido 
 8. el detalle del pedido no existe sin ningun producto
 9. el detalle almacena cantidad 
+
+## Ejercicio 5
+EJERCICIO
+En una empresa se administra la siguiente información:
+Se almacena de cada departamento:
+1. Nombre del departamento (único).
+2. Número del departamento (único).
+3. Empleado que administra el departamento.
+4. Fecha en que el empleado comenzó a administrar el departamento.
+Un departamento puede tener varias ubicaciones.
+Cada departamento controla proyectos, de los cuales se almacena:
+1. Nombre del proyecto (único).
+2. Número del proyecto (único).
+3. Ubicación del proyecto.
+## De cada empleado se almacena:
+1. Nombre.
+2. Número de Seguro Social.
+3. Dirección.
+4. Salario.
+5. Sexo.
+6. Fecha de nacimiento.
+## Además:
+Cada empleado pertenece a un solo departamento.
+Un empleado puede trabajar en varios proyectos.
+Se registra el número de horas por semana que trabaja en cada proyecto.
+Cada empleado tiene un supervisor directo (que también es un empleado).
+De cada dependiente se almacena:
+1. Nombre.
+3. Sexo.
+4. Fecha de nacimiento.
+5. Parentesco con el empleado.
+## Reglas de negocio
+1. Un departamento tiene un nombre y un número únicos.
+2. Un departamento es administrado por un solo empleado.
+3. Se registra la fecha en que el empleado comenzó a administrar el departamento.
+4. Un departamento puede tener una o varias ubicaciones.
+5. Un departamento controla varios proyectos.
+6. Cada proyecto pertenece a un solo departamento.
+7. Cada proyecto tiene un nombre, un número y una ubicación únicos.
+8. Un empleado pertenece a un solo departamento.
+9. Un empleado puede trabajar en uno o varios proyectos.
+10. En cada proyecto se registra el número de horas que trabaja el empleado por semana.
+11. Cada empleado tiene un supervisor directo, quien también es un empleado.
+12. Un empleado puede tener varios dependientes.
+13. Cada dependiente pertenece a un solo empleado.
+16. De cada dependiente se registra su nombre, sexo, fecha de nacimiento y parentesco con el empleado.

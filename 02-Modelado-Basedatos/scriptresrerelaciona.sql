@@ -1,4 +1,4 @@
---Crear una base de datos 
+ --Crear una base de datos 
 CREATE DATABASE bdconstraint;
 Go
 
