@@ -1,102 +1,113 @@
-# construccion de Base de datos con SQL-LDD
+# Construccion de Base de Datos con SQL-LDD
 
+SQL (Structured Query Languaje ) se divide en cinco grandes grandes categorias:
 
-SQL (Structured quer lenjuage) se divide en cinco grandes categorias:
+1. *DDL (Data Definition Languaje)*
+2. *DML (Data Manipulation Languaje)*
+3. *DQL (Data Query Languaje)*
+4. DLC   (Data Control Languaje)
+5. TLC   (Transaction Control Languaje)
 
-1. ddl(data Defenition Lanjuage)
-2. DML ( Date Manipulation Lanjuage)
-3. DQL (Data quer Lanjuage)
-4. DCL (Data Control Lanjuage)
-5. TCL (Transacion control lanjuage)
+## SQL-DDL
 
-## SQL-DLL
+*Lenguaje de Deficion de Datos*
 
-** Lanjuage de Defenition de Datos **
+Se utiliza para *crear y modificar la estructura* de una base de datos 
 
-se utiliza para crear ** y modificxar la estructura** de una base de datos
-Base de datos
--Tablas
-- Visitas
--Indices
--Restricciones
--Esquemas
--Strore Procedures
--Trigger
--fuctions
+Con DDL trabajamos sobre los objetos de la base de datos:
 
-**comandos principales
-| Comando | Funcion |
-| :---     | :---   |
-|Create   | crear objetos |
-|Alert   | Modificar objetos |
-|Drop   | elimina objetos |
-|TRUNCANTE   | VACIA una tabla |
+- Base de datos 
+- Tablas 
+- Vistas
+- Indices 
+- Restricciones 
+- Esquemas
+- Store procedures
+- trigger
+- functions 
+
+*Comandos Principales*
+
+|Comando | Funcion          |
+|CREATE  |Crear Objetos     |
+|ALTER   |Modificar Objetos |
+|DROP    |Eliminar Objetos  |
+|TRUNCATE|Vaciar una tabla  |
 
 
 ## SQL-DML
 
-**Lenjuage de manipulacion de datos**
-sirve para **Trabajar  la informacion almaccenada**
-Aqui no cambia la estructura, si no los rgistros
+*Lenguaje de Manipulacion de Datos*
 
+Sirve para *trabajar con la informacion almacenada*
 
+Aqui no cambia la estrcuctura, sini los registros
 
-**comandos principales
-| Comando | Funcion |
-| :---     | :---   |
-|INSERT   | inserta registros |
-|update   | ACtualiza registris |
-|delte   | elimina registros|
-|TRUNCANTE   | VACIA objetos |
+*Comando Principales*
 
+|Comando    | Funcion                    |
+| :---------| :--------------------------|
+|INSERT     | Insertar Registros         |
+|UPDATE     | Actualizar Registros       |
+|DELETE     | Eliminar Registros         |
 
 ## SQL-DQL
-**Lenjuage de consulta de datos **
 
-su funcio es ** consultar informacion**
+*Lenguaje de Consulta de datos*
 
-**comandos principales
-| Comando | Funcion |
-| :---     | :---   |
-|SELECT   | Consultar informacion |
+Su funcion es *consultar informacion*
 
-General se combina:
+*Comando Principal*
 
--Where
--ORDER BY
--GROUP BY
--HAVING
--JOIN(LEFT, RIGHT, INNER, CROSS Y FULL)
+|Comando    | Funcion                   |
+| :-------- | :------------------------ |
+|SELECT     | Consultar Informacion     |
+
+General se combina con:
+
+- WHERE
+- ORDER BY
+- GROUP BY 
+- HAVING 
+- JOIN (LEFT, RIGHT, INNER, CROSS Y FULL)
 - DISTINCT
--TOP / LIMIT
--funcion de agregado (SUM, AVG , MAX, MIN COUNT)
--Funcion de ventana (window fuction)
+- TOP / LIMIT
+- Funciones de Agredado (SUM, AVG, MAX, MIN, COUNT)
+- Funciones de Ventas (window function)
 
-## Nomenclactura snake_case
+## Nomeclatura snake_case
 
-**snake_case** es la convecion mas  recomendada de dia de ahora si se busac una nomeclatura moderna, portable y aliniada 
-con buenas practicas en distintos morores de base de datos
+*snake_case* es la convencion mas recomendada de ahora si se busca una nomeclatura moderna, portable y alineada con buenas practicas en distintos motores de base de datos.
 
-la razo es que funciona de forma consistente  en **SQLSERVER,
-MYsql** y especialmente en **postgresSQL**. con snake_case se evitan problemas de mayusculas  y se hacen las consultas sean mas legibles.
+La razon es que funciona de forma consinte en *SQLServer, Mysql* y especificamente en *postgresSQL*. Con snake_case se evitan problemas de mayuscula y se hacen las consultas sean mas legibles.
 
-## Estandar de construccion:**
+*Estandar de Construccion:*
 
-  Objeto | |Conveccion  | Ejemplo |
-|
-|Base de datos | snake_case |control escolar |
-|Esquema    | snake_case |ventas. rh, seguridad  |
-|Tabla  | Singular en snake_case | clientte pedido, detalle de pedido |
-|Columna  | snake_case | cliente_id, fecha_registro, nombre, correo_electronico |
-|PK| <tabla> id |cliente_id, categoria_id|
-|FK| igual que la PK referenciada |cliente_id, poducto_id|
-|Tabla puente| <tabla><tabla2> |cliente_id, provedor_producto|
-
-**Nombrar las restricciones
-
--pk_cliente
--fk_cliente -> pk_tablaorigen
+|Objeto         | Convencion                   | Ejemplo                                                |
+| :------------ | :----------------- ------    | :----------------------                                |
+|Base de Datos  | snake_case                   | control_escolar                                        |
+|Esquema        | snake_case                   | ventas, rh, seguridad                                  |
+|Tabla          | Singular en snake_case       | cliente, pedido, detalle_pedido                        |
+|Columna        | snake_case                   | cliente_id, fecha_registro, nombre, correo_electronico |
+|PK             | <tabla>_id                   | cliente_id, categoria_id                               |
+|FK             | Igual que la PK referenciada | cliente_id, producto_id                                |
+|Tabla Puente   | <tabla1>_<tabla2>            | alumno_curso, proveedor_producto                       |
 
 
+*Nombrar las Restricciones*
 
+- pk_cliente
+- fk_pedido_cliente -> pk_tablaorigen_tablareferenciada
+- uq_cliente_correo_electronico
+- ck_producto_precio
+- df_cliente_activo
 
+## Alter Table 
+
+Permite modificar una tabla existente
+
+- Agregar columnas 
+- Eliminar columnas
+- Modificar columnas
+- Agregar restricciones 
+- Eliminar restricciones

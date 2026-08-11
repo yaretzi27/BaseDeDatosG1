@@ -1,3 +1,7 @@
+
+
+
+
 USE comercial_db;
 GO
 

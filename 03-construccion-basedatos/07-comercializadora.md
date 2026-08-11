@@ -1,3 +1,4 @@
+```sql
 --CREAR LA BADE DE DATOS 
 CREATE DATABASE comersializadora;
 GO
@@ -121,3 +122,11 @@ pedido_id CHAR(5) NOT NULL,
     
 
 );
+GO 
+```
+### Diagrma Final 
+![Comerzializadora](../IMGG/DIAGRAMA5.jpeg)
+
+
+
+
