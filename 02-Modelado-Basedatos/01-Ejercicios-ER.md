@@ -16,16 +16,16 @@
  -Fecha de apertura
  -Tipo de sangre
 
- ## Reglas de negocio 
+ ## Reglas de negocio
 
- 1.- Cada paciente debe tener exactamente 
+ 1.- Cada paciente debe tener exactamente
 
  2. Ejercicio 2
- Una universidad administra 
- profesores y cursos 
+ Una universidad administra
+ profesores y cursos
  
  > De cada profesor se almacena:
- -Clave profesor 
+ -Clave profesor
  -nombre
  -Especialidad
 

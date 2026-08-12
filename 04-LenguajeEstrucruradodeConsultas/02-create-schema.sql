@@ -1,11 +1,8 @@
-/*===============================================000
+/*===============================================
 DQL(DATE quieri Lenjuage )SQL SEREVER
 ARCHIVO:2-CREATE -DATABASE-sql
 DESCRIPCION:crear
-========================================*/
-
-
-
+=======================================================*/
 
 USE comercial_db;
 GO
@@ -277,3 +274,5 @@ FOREIGN KEY(id_producto)
 REFERENCES productos(id_producto)
 );
 GO
+
+

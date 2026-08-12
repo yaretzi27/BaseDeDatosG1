@@ -59,6 +59,19 @@ VALUES (3,'Marile', 'Lopez',
 
   SELECT * FROM expediente
 
+   crear tabla de detalle pedido
+   =====================================0
+   CREATE TABLA detalle_INT NOT NULL
+   producto_id CHAR(5) NOT NULL,
+   fabricante_id CHAR (3) NOT NULL,
+precio DECIMAL  (10,2) NOT NULL,
+created_at DATETIME2 NOT NULL
+CONSTRAINT ck_detalle_pedido_
+Check(precio<0.0),
+cantidad INT NOT NULL
+CONSTRAINT ck_detalle_pedido_precio
+
+
 
 
 
