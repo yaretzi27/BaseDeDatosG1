@@ -197,9 +197,255 @@ p.precio AS precio,
 From productos AS p 
 WHERE precio BETWEEN 200 AND 300;
 
+--- -- mostrar los productos con precio que esten entre $200 y $300 que ademas
+-- de cincuenta unidades
+
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+FROM productos AS p;
+WHERE p.precio>=200
+		and p.precio<=300
+		AND 
+		p.existencia < 50
+ORDER BY precio DESC;
+
+-- mostrar      productos existencia inferior a 10 superior a 190
+
+--- ORDENADOR NOT 
+
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+FROM productos AS p
+WHERE p.existencia  10
+		
+	OR 
+		p.existencia >190;
 
 
 
+--- ORDENADOR NOT 
+
+-- mostrar los productos que no sean mayores a 400
+
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+FROM productos AS p
+WHERE NOT p.precio>400;
 
 
+-- mostrar los empleados de los departamentos uno y dos que tengan salario mayor 
+--- a $25,000
+SELECT 
+e.id_empledo,
+e.nombre,
+e.salario,
+e.id_departamento
+FROM empleado AS e
+WHERE(e.departamento =1
+or
+e.id_departamento = 2)
+AND e.salario >25000;
+
+--- mostrar los empledos qie no tiene jefe 
+SELECT 
+p.id_empledos,
+p.id_departamneto,
+p.nombre,
+p.id_jefe
+FROM empleados AS p
+WHERE P.id_jefe IS NULL;
+
+-- OPERADOR BETWEN
+--permite comprobar si un valor se encuentan dentro de un frango inclusivo 
+
+/* =====================================================
+WHERE columna BETWEEN limite_inferior AND limite superior
+===========================================================*/
+
+--- Mostrar empledos con salario entre $15,000 y $20,000 incluyendo ambos limites 
+SELECT 
+e.id_empeado,
+e.nombre,
+e.salario
+FROM empleados AS e 
+WHERE salario BETWEEN 15000 AND 20000
+ORDER BY 3 DESC;
+
+SELECT 
+e.id_empeado,
+e.nombre,
+e.salario
+FROM empleados AS e 
+WHERE e.slario >=15000
+		and 
+		e.salario<=20000;
+
+---  mostrar los´productos que los precios esten en el rango de 100 o 200
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+FROM productos AS p
+WHERE p.precio BETWEEN	100 AND 200;
+
+-- mostrar las ventas del 1 de enero del 2025 al 10 de enro del 2025
+SELECT 
+v.id_venta AS [numero_venta],
+v.id_cliente AS [cliente],
+v.id_empledo AS [vendedor],
+v.fecha AS [fecha_venta],
+UPPER (FORMAT(V.fecha 'm'. 'es_ES')) AS [mes_venta],
+UPPER (FORMAT (v.fecha, 'dddd', 'es_ES')) AS [dia_venta],
+DATEPART(YEAR, v.fecha) AS [año_venta]
+FROM ventas AS v
+WHERE v.fecha BETWEEN '2025-01-01' AND '2025-01-10'
+ORDER BY [cliente] ASC;
+
+
+-- mostra los productos que su rango de precio no este entre 100 y 400
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+FROM productos AS p
+WHERE p.precio AS p
+WHERE p.precio NOT BETWEEN 100 AND 400;
+
+---- operador IN 
+---permite comparar una columna con una lista DE valore
+/*========================================================00
+WHERE  columna IN(valor_1, valor_2, valor_3)
+=============================================*/
+-- mostrar productos pertenencientes a las categorias 1, 7, o 12
+SELECT 
+p.codigo,
+p.nombre,
+p.precio,
+p.existencia
+p.id_categoria
+FROM productos AS p
+WHERE p.id_categoria = 1
+OR p.id_categoria=7
+OR p.id_categoria =12
+ORDER BY	p.id_categoria;
+/*==========================================000 TODO OPERADOR LIKE ==========
+permite buscar patrones dentro de valores de texto
+
+sintaxis 
+
+WEHRE columna like 'patron';
+
+los patrones puede contener comodines:
+
+comodin   Significado
+%          cero, uo o varios valores 
+_          Exactamente un carecter
+[abc]      Un caracter incluido en la lista 
+[a-f]      in caracter incluido en el rango
+[^abc] un caracter no incluido en la lista 
+=============================================================================*/
+
+-- comodin %
+-- este simbolo%prenta candidad de caracteres incluyendo 0 caracteres 
+
+
+ --comienza 
+ -- HWHERE nombre LIKE 'Cliente%'
+ -- valores que comienzan con cliente
+
+ -- termina 
+ -- WHERE correo'%mail.com'
+ -- valores que termina con mail.com
+
+ --contiene 
+ ---WHERE nombre LIKE '%a%'
+ -- valores que contiene el caracter en cualquier posicion 
+
+ -- buscar codigos del producto que comienzen con el P001
+
+ SELECT 
+ p.codigo,
+ p.nombre,
+ p.precio
+ FROM productos AS p
+ WHERE p.codigo LIKE 'P001%';
+
+ SELECT *
+ FROM Customers
+ WHERE CompanyName LIKE 'Bo%';
+
+  SELECT *
+ FROM Customers
+ WHERE ContacTitle LIKE '%er%'
+
+
+ -- comodin de un caracter 
+ --- el guin bajo _ representa exactamente un  cracter 
+
+
+ -- buscar los correos de los clientes que terminen exactamente con 10@mail.com
+
+ SELECT 
+ c.id_cliente,
+ c.nombre,
+ c.correo
+ FROM cliente AS c
+ WHERE c.correo LIKE '%10@mail.com';
+
+ -- Mpstrar los nombres que contienen el caracter uno
+ SELECT 
+p.codigo
+ p.nombre,
+ p.precio
+ FROM producto AS p
+ WHERE p.nombre LIKE '%1%';
+ 
+ -- comodin de un caracter 
+ --- el guin bajo _ representa exactamente un  cracter
+
+ --- mostrar los codigos con P000 y exactamente un caracter adicional 
+ SELECT 
+p.codigo,
+ p.nombre,
+ p.precio
+ FROM producto AS p
+ WHERE p.codigo LIKE 'P00_';
+
+ -- Patrones con corchetes 
+  SELECT 
+p.codigo,
+ p.nombre,
+ p.precio
+ FROM producto AS p
+ WHERE p.codigo LIKE 'P000[1-5]';
+
+ SELECT 
+p.codigo,
+ p.nombre,
+ p.precio
+ FROM producto AS p
+ WHERE p.codigo LIKE 'P000[^1-5]';
+ 
+ --- Buscar un guion bajo literal 
+
+ -- en LIKE _ es un comodin 
+ -- las ciidades de esta base de datos, contiene guines bajos, por elemplo:
+ -- ciudad_1_1
+
+ --- Para buscar un _ literal medinate corchetes se pude utilizar lo siguiente
+
+ SELECT * 
+ FROM CUIDADES
+ WHERE nombre LIKE '%[_]%' --- significa un caracter de guin bajo literal 
 
