@@ -1,10 +1,13 @@
-/*==================================================================================================
+/*
+========================================================================================================================
 
-ejercicio extra con la base de datos Northwind
+Ejercicio extra con la base de datos Northwind
 
-====================================================================================================*/
+========================================================================================================================
+*/
 
-use NORTHWND;
+USE NORTHWIND;
+GO
 
 -- Mostrar las ventas realizadas en Francia, brazil y belgica
 -- de 10 de julio e 1996 al 31 de Diciembre de 1998, que tenga Region de Envio,
@@ -12,18 +15,27 @@ use NORTHWND;
 -- cercana a la mas antigua.
 
 SELECT
-	o.OrderID AS numero_orden,
-	O.CustomerID AS cliente,
-	o.ShipCountry AS pais_envio,
-	o.OrderDate AS fecha_orden,
-	UPPER(FORMAT (o.OrderDate, 'mmm ', 'es_Es')) AS (mes_orden),
-	UPPER(FORMAT (o.OrderDate, 'dddd', 'es_Es')) AS (dia_orden),
-	DATEPART(YEAR, O.OrderDate) AS [año_orden]
+    o.OrderID AS numero_oreden,
+    o.CustomerID AS cliente,
+    o.ShipCountry AS pais_envio,
+    o.OrderDate AS fecha_orden,
+    UPPER(FORMAT (o.OrderDate, 'MMM', 'es-ES')) AS [mes_orden],
+    UPPER(FORMAT (o.OrderDate, 'DDD', 'es-ES')) AS [dia_orden],
+    DATEPART(YEAR, o.OrderDate) AS [aÃ±o_orden]
 FROM Orders AS o
-WHERE o.ShipCountry IN ('France' , ' Brazil' , 'belgui')
-	AND 
-	o.CustomerID IN ('VICTE',' HANAR' , 'SUPRD')
-		AND 
-		o.OrderDate Between '1996-07-10' AND '1998-12-24'
-		ORDER  BY o.OrderDate ASC;
-		
+WHERE o.ShipCountry IN ('France', 'Brazil', 'Belgium')
+    AND o.CustomerID IN ('VICT', 'HANAR', 'SUPRD')
+    AND o.OrderDate BETWEEN '1996-07-10' AND '1998-12-31'
+ORDER BY o.OrderDate ASC;
+
+------------------------------------------------------------------------------------------------------
+SELECT
+    *
+FROM Customers
+WHERE CompanyName LIKE 'Bo%'
+
+----------------------------------------------------------------------------------------------------------
+SELECT
+    *
+FROM Customers
+WHERE ContactTitle LIKE '%er%'

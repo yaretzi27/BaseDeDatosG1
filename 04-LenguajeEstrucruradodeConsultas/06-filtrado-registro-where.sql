@@ -17,7 +17,7 @@ GROUP BY
 HAVING
 ORDER BY
 
-ORDEN DE EJECUCION 
+ORDEN DE EJECUCION
 
 FROM / JOINS (INNER, LEFT, RIGHT, CROSS, FULL, SELF)
 WHERE
@@ -37,10 +37,10 @@ OPERADORES ARITMETICOS
 OPERADORES RELACIONALES
 = Igual que
 < Menor que
-> Mayor que 
+> Mayor que
 <= Menor igual que
 >= Mayor igual que
-<> Diferente que 
+<> Diferente que
 != Diferente
 
 
@@ -55,19 +55,19 @@ OR
 Sintaxis
 
 SELECT
-	columna_1, 
+	columna_1,
 	columna_2,
 	columna_n
 	FROM nombre_tabla
 	WHERE condicion;
 
-	Nota: condicion puede ser relacional y a combinacion de esta con logica 
-	Nota: El SELECT no filtra registros 
+	Nota: condicion puede ser relacional y a combinacion de esta con logica
+	Nota: El SELECT no filtra registros
 
 ===================================================================================================*/
 
 --Seleccionar el producto cuyo precio es $200
-SELECT 
+SELECT
 	p.codigo AS [Codigo]
 	p.nombre AS [Producto]
 	p.precio AS [Precio]
@@ -79,14 +79,14 @@ SELECT
 	c.id_cliente,
 	CONCAT (c.nombre, '', c.apellido_paterno, '', c.apellido_materno) AS nombre_completo,
 c.correo
-FROM clientes AS c 
+FROM clientes AS c
 WHERE c.id_cliente = 25;
 
 
--- Comparacion de cadenas de texto 
--- Los valores de texto deben escribirse entre comillas simples 
+-- Comparacion de cadenas de texto
+-- Los valores de texto deben escribirse entre comillas simples
 
--- Seleccionar las categorias  
+-- Seleccionar las categorias
 SELECT
 	c.nombre AS [Categoria]
 FROM categorias AS c
@@ -118,7 +118,7 @@ SELECT
 	p.id_categoria,
 	p.precio
 	FROM producto AS p
-	WHERE p.precio 
+	WHERE p.precio
 FROM productos
 WHERE existencia<10;
 
@@ -133,7 +133,7 @@ SELECT
 FROM emlpleado AS e
 WHERE salario >= 30000
 
--- Seleccionar los datos de los productos donde sus precios sean de $10 o menos 
+-- Seleccionar los datos de los productos donde sus precios sean de $10 o menos
 SELECT 
 	p.id_producto,
 	p.nombre,
@@ -142,7 +142,7 @@ SELECT
 FROM productos AS p
 WHERE p.precio <=10
 -- Comparacion de fechas
--- Las fechas deben escribirse ebtre comillas simples 
+-- Las fechas deben escribirse ebtre comillas simples
 
 -- Se recomienda el formato AAAA-MM-DD
 
@@ -153,7 +153,7 @@ SELECT
 	v.fecha,
 	v.id_cliente,
 	v.id_empleado
-FROM ventas as v 
+FROM ventas as v
 WHERE fecha = '2025-12-24'
 
 -- Seleccionar los datos de las ventas realizadas en 2025
@@ -161,7 +161,7 @@ WHERE fecha = '2025-12-24'
 SELECT
 	v.id_venta,
 	v.fecha,
-	YEAR(v.fecha) AS [A�O], 
+	YEAR(v.fecha) AS [A�O],
 	FORMAT(v.fecha, 'MMMM') AS [mes_ingles],
 	FORMAT(v.fecha, 'MMMM', 'es-ES') AS [mes_espa�ol],
 	DAY(v.fecha) AS [dia],
@@ -170,7 +170,7 @@ SELECT
 	UPPER(FORMAT (v.fecha, 'ddd', 'es-ES')) AS [mes_abreviatura],
 	v.id_cliente,
 	v.id_empleado
-FROM ventas as v 
+FROM ventas as v
 WHERE MONTH (fecha) = 4;
 
 -- MOSTRAR LOS PRODUCTOS CON PRECIO ENTRE $200 Y $300 QUE ADEMAS TENGAN MENOS DE cincuenta unidades
@@ -194,7 +194,7 @@ SELECT
 	p.nombre,
 	p.precio,
 	p.existencia
-FROM productos AS p 
+FROM productos AS p
 WHERE p.existencia<10
 	OR
 	p.existencia>190
@@ -207,7 +207,7 @@ WHERE p.existencia<10
 	p.nombre,
 	p.precio,
 	p.existencia
-FROM productos AS p 
+FROM productos AS p
 WHERE NOT p.precio <= 400;
 
 
@@ -224,12 +224,12 @@ WHERE (e.id_departamento=1
 	AND e.salario >25000;
 ;
 
---Mostrar los empleados que no tienen jefe 
+--Mostrar los empleados que no tienen jefe
 SELECT
 	p.id_empleado,
 	p.id_departamento,
 	p.nombre,
-	p.id_jefe 
+	p.id_jefe
 FROM empleados AS p
 WHERE p.id_jefe IS NOT NULL;
 
@@ -337,35 +337,35 @@ ORDER BY p.id_categoria;
 /*==========================================TODO OPERADOR LIKE ==========
 permite buscar patrones dentro de valores de texto
 
-sintaxis 
+sintaxis
 
 WEHRE columna like 'patron';
 
 los patrones puede contener comodines:
 
 comodin   Significado
-%          cero, uo o varios valores 
+%          cero, uo o varios valores
 _          Exactamente un carecter
-[abc]      Un caracter incluido en la lista 
+[abc]      Un caracter incluido en la lista
 [a-f]      in caracter incluido en el rango
-[^abc] un caracter no incluido en la lista 
+[^abc] un caracter no incluido en la lista
 =============================================================================*/
 
 -- comodin %
--- este simbolo%prenta candidad de caracteres incluyendo 0 caracteres 
+-- este simbolo%prenta candidad de caracteres incluyendo 0 caracteres
 
 
- --comienza 
+ --comienza
  -- HWHERE nombre LIKE 'Cliente%'
  -- valores que comienzan con cliente
 
- -- termina 
+ -- termina
  -- WHERE correo'%mail.com'
  -- valores que termina con mail.com
 
- --contiene 
+ --contiene
  ---WHERE nombre LIKE '%a%'
- -- valores que contiene el caracter en cualquier posicion 
+ -- valores que contiene el caracter en cualquier posicion
 
  -- buscar codigos del producto que comienzen con el P001
 
@@ -385,8 +385,8 @@ _          Exactamente un carecter
  WHERE ContacTitle LIKE '%er%'
 
 
- -- comodin de un caracter 
- --- el guin bajo _ representa exactamente un  cracter 
+ -- comodin de un caracter
+ --- el guin bajo _ representa exactamente un  cracter
 
 
  -- buscar los correos de los clientes que terminen exactamente con 10@mail.com
@@ -399,17 +399,17 @@ _          Exactamente un carecter
  WHERE c.correo LIKE '%10@mail.com';
 
  -- Mpstrar los nombres que contienen el caracter uno
- SELECT 
+ SELECT
 p.codigo
  p.nombre,
  p.precio
  FROM producto AS p
  WHERE p.nombre LIKE '%1%';
  
- -- comodin de un caracter 
+ -- comodin de un caracter
  --- el guin bajo _ representa exactamente un  cracter
 
- --- mostrar los codigos con P000 y exactamente un caracter adicional 
+ --- mostrar los codigos con P000 y exactamente un caracter adicional
  SELECT 
 p.codigo,
  p.nombre,
@@ -417,8 +417,8 @@ p.codigo,
  FROM producto AS p
  WHERE p.codigo LIKE 'P00_';
 
- -- Patrones con corchetes 
-  SELECT 
+ -- Patrones con corchetes
+  SELECT
 p.codigo,
  p.nombre,
  p.precio
@@ -432,9 +432,9 @@ p.codigo,
  FROM producto AS p
  WHERE p.codigo LIKE 'P000[^1-5]';
  
- --- Buscar un guion bajo literal 
+ --- Buscar un guion bajo literal
 
- -- en LIKE _ es un comodin 
+ -- en LIKE _ es un comodin
  -- las ciidades de esta base de datos, contiene guines bajos, por elemplo:
  -- ciudad_1_1
 
@@ -442,5 +442,5 @@ p.codigo,
 
  SELECT * 
  FROM CUIDADES
- WHERE nombre LIKE '%[_]%' --- significa un caracter de guin bajo literal 
+ WHERE nombre LIKE '%[_]%' --- significa un caracter de guin bajo literal
 
